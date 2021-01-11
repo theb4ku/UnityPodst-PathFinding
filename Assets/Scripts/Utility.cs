@@ -31,7 +31,7 @@ public static class Utility
     public static Vector3 GetMouseWorldPosition()
     {
         Vector3 vec = GetMouseWorldPositionWithZ(Input.mousePosition, Camera.main);
-        vec.y = 0f;
+        vec.z = 10f;
         return vec;
     }
     public static Vector3 GetMouseWorldPositionWithZ()
