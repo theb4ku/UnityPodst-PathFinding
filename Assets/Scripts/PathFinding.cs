@@ -55,6 +55,11 @@ public class PathFinding
             foreach(PathNode neighbourNode in GetNeighbourList(currentNode))
             {
                 if (closedList.Contains(neighbourNode)) continue;
+                if (!neighbourNode.isWalkable)
+                {
+                    closedList.Add(neighbourNode);
+                    continue;
+                }
 
                 int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
                 if(tentativeGCost < neighbourNode.gCost)
@@ -104,7 +109,7 @@ public class PathFinding
 
         return neighbourList;
     }
-    private PathNode GetNode(int x, int z)
+    public PathNode GetNode(int x, int z)
     {
         return grid.GetGridObject(x, z);
     }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
+    [SerializeField] private 
     PathFinding pathfinding;
     private MyGrid<bool> grid,grid2,grid3;
     // Start is called before the first frame update
@@ -48,6 +49,9 @@ public class Testing : MonoBehaviour
             if (plane.Raycast(ray, out float distance))
             {
                 Vector3 tmp = ray.GetPoint(distance);
+                pathfinding.GetGrid().GetXZ(tmp, out int x, out int z);
+                pathfinding.GetNode(x, z).SetIsWalkable(false);
+
                 //Debug.Log(grid.GetValue(tmp));
                 //Debug.Log(grid2.GetValue(tmp));
                 //Debug.Log(grid3.GetValue(tmp));
